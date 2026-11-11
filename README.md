@@ -1,87 +1,143 @@
-# Descrição do Projeto
-Este projeto foi desenvolvido com o intuito de atender aos requisitos de um trabalho da faculdade, condizente a matéria de Tópicos Especiais de Programação Web.
+![Página inicial do Fortnite API em execução](documentation/screenshot.png)
 
-## Objetivo do Projeto
-O objetivo do trabalho é criar um site em react atendendo aos seguintes requisitos:
+# Fortnite API — aplicação web
 
-1) Escolha um tema para ser aplicado ao seu trabalho. Esse tema deve servir de alicerce para todos os requisitos abaixo descritos.
+Aplicação web acadêmica com temática de Fortnite, desenvolvida em React. Reúne páginas públicas, cadastro e login via Firebase, cadastros de personagens, recados e contatos, além de uma consulta externa de escolas por notas do ENEM. Apesar do nome, este repositório contém um frontend, não uma API própria de Fortnite.
 
-2) O projeto será dividido em duas partes: SITE e ADMINISTRATIVO. Abaixo os requisitos principais de cada uma destas aplicações.
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+[![License MIT](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
 
-- ### ADMINISTRATIVO
-- [x] Deve ser oferecido primeiramente a tela de login, onde somente usuários credenciados podem ter acesso. Nesta mesma tela, deve haver uma opção para registro de novos usuários.
+## 📋 Table of contents
 
-- [x] O usuário terá a opção de ‘Lembre-me, assim quando for acessado o ambiente restrito novamente, já será apresentado o e-mail de acesso. Essa ação é especifica por navegador.
+- [✨ Features](#features)
+- [🧪 Technologies](#technologies)
+- [🛠️ Environment setup](#environment-setup)
+- [🚀 Getting started](#getting-started)
+- [🗂️ Project structure](#project-structure)
+- [✅ Testing and quality](#testing-and-quality)
+- [🔎 Troubleshooting](#troubleshooting)
+- [🤝 Contributing](#contributing)
+- [📜 License](#license)
 
-- [x] No ambiente visual do ADMINISTRATIVO deve ser aplicado um Template, como por exemplo, Atlantis-Lite-master, compartilhado na pasta CODES da disciplina.
+<a id="features"></a>
 
-- [x] As páginas deste ADMINISTRATIVO só poderão ser acessadas se o usuário estiver devidamente logado. Caso contrário, o mesmo deve ser encaminhado a tela de Login.
+## ✨ Features
 
-- [x] Ao acessar o Ambiente Restrito, deve ser apresentado na tela as escolas de Passo Fundo que possuem Enem mínimo de 550. Os dados podem ser obtidos através da API http://educacao.dadosabertosbr.com/api
+- Página inicial e navegação com `HashRouter`.
+- Cadastro e login de usuários por e-mail/senha no Firebase Authentication.
+- Cadastro, consulta e exclusão de personagens por usuário, e listagem pública agregada.
+- Formulário de contato e consulta de mensagens armazenadas no Realtime Database.
+- Cadastro e consulta de recados.
+- Consulta de escolas de Passo Fundo com nota ENEM mínima de 550, por serviço externo.
 
-- [x] Deve ser criado um CRUD com dados referentes a temática desde projeto. Opções como Novo Registro, Lista de Dados e Excluir devem estar presentes nesta opção. É necessário no mínimo dois campos para cada registro (Ex.: nome e e-mail ou marca e placa). Os dados presentes nesta seção são específicas por usuário, não aparecendo o cadastro de outros.
+As guardas de navegação usam estado de sessão no navegador; a autorização de dados depende das regras do Firebase. Os fluxos com dados e autenticação não foram validados nesta entrega.
 
-- [x] Deve ser apresentado uma opção de acesso aos RECADOS, os quais serão fornecidos pelo ambiente aberto do projeto, denominado SITE.
+<a id="technologies"></a>
 
-- [x] Deve haver uma opção de Logoff, a qual ao ser acionada, deve fazer com que o usuário seja encaminhado a tela de Login e não deve permitir o acesso as telas da ADMINISTRATIVO.
+## 🧪 Technologies
 
-- ### SITE
-- [x] Ao executar o projeto, o site será responsável pela tela inicial, apresentado uma mensagem de boas-vindas.
+| Tecnologia | Versão declarada | Finalidade |
+| --- | --- | --- |
+| [React](https://react.dev/) | `^16.12.0` | Interface |
+| [Create React App](https://create-react-app.dev/) | `react-scripts` `3.2.0` | Desenvolvimento, build e testes |
+| [React Router](https://v5.reactrouter.com/) | `^5.0.1` | Rotas com hash |
+| [Firebase](https://firebase.google.com/docs) | `^7.2.1` | Authentication e Realtime Database |
+| [Bootstrap](https://getbootstrap.com/docs/4.3/) | `^4.3.1` | Estilos |
+| [Axios](https://axios-http.com/) | `^0.19.0` | Consulta externa |
 
-- [x] No rodapé do site, deve ser apresentado as informações do desenvolvedor,
-como nome e-mail.
+As faixas são as declaradas no manifesto. O projeto não fixa Node.js; Node.js 14.21.3/npm 6.14.18 foram escolhidos para reproduzir CRA 3 sem a divergência OpenSSL dos runtimes recentes.
 
-- [x] Deve haver um menu com links para outras duas páginas, as quais deverão
-apresentar na primeira delas, uma lista com os dados cadastrados no CRUD
-do ADMINISTRATIVO, não importando o usuário, e uma opção para acesso ao
-CONTATO.
+<a id="environment-setup"></a>
 
-- [x] Na página de CONTATO, deverá ser oferecido ao usuário um formulário de
-contato, com os campos: nome, e-mail, assunto e mensagem, os quais ao
-serem enviados, deverão aparecer na ADMINISTRATIVO para todos os
-usuários.
+## 🛠️ Environment setup
 
-- [x] Deve ser utilizado um template a escolha do desenvolvedor, como por
-exemplo, woodrox-gh-pages, na pasta Templates da disciplina.
+Requer Git, Node.js e npm. O projeto não fixa Node.js em `engines`, `.nvmrc` ou `.node-version`. **Node.js 14.21.3 com npm 6.14.18** foi escolhido para a reprodução da pilha histórica; não é uma versão declarada pelo repositório nem uma atualização de dependências.
 
+```bash
+nvm install 14.21.3
+nvm use 14.21.3
+git clone https://github.com/paulodaluz/FortniteApi.git
+cd FortniteApi
+npm install
+```
 
-- ### GERAL
-- [x] Todos os layouts aplicados devem ser responsivos.
+Não há lockfile versionado: use `npm install`, não `npm ci`. Este guia adota npm, disponível com o Node.js, sem prometer uma resolução de dependências idêntica entre instalações. Não há Husky, hooks versionados ou script `prepare` para ativar.
 
-- [x] O Projeto deve ser carregado no github ou bitbucket e compartilhado com o professor o link dos códigos, por e-mail: XXX.
+### Firebase and external services
 
-- [x] No readme do projeto no git, deve ser apresentado os dados do
-desenvolvedor, bem como uma lista de tecnologias e bibliotecas utilizadas.
+O objeto de configuração Firebase está em `src/services/CrudContact.js`, onde ocorre `firebase.initializeApp`. Use a configuração Web de um projeto próprio, habilite login por e-mail/senha no **Authentication** e prepare o **Realtime Database**. As árvores acessadas são `/personagens/{uid}`, `/recados` e `/contatoMessages`. As regras de dados precisam corresponder aos acessos pretendidos; não torne o banco público para contornar falhas.
 
-- [x] Deve ser utilizado a opção de HashRouter, para que o projeto possa ser
-publicado em qualquer tipo de servidor web (apache, tomcat, etc.)
+`public/index.html` carrega uma folha Bootstrap 4.3.1 por CDN, além dos arquivos locais do template. O código não lê configuração Firebase de `.env`. A integração ENEM de `src/services/getEnemResults.js` usa o proxy CORS Anywhere e a API de educação; sua disponibilidade não é garantida nem foi validada. Não há backend local a iniciar.
 
-- [x] Deve ser realizado o build da aplicação.
+<a id="getting-started"></a>
 
-## Tecnologias Utilizadas
-As técnologias utilizadas foram NodeJS, NPM,  React e Firebase.
+## 🚀 Getting started
 
-## Bibliotecas utilizadas
-* axios versão 0.19.0 ou superior
-* bootstrap versão 4.3.1 ou superior
-* react versão 16.12.0 ou superior
-* react-bootstrap versão 1.0.0-beta.16 ou superior
-* react-dom versão 16.12.0 ou superior
-* react-router-dom versão 5.0.1 ou superior
-* react-scripts versão 3.2.0 ou superior
-* react-spinners versão 0.6.1 ou superior
-* firebase versão 7.2.1 ou superior
+```bash
+npm start
+```
 
-## Como instalar a aplicação
-Basta apenas baixar o projeto, abrir a pasta local dele no terminal e digitar o comando `npm install`, que ele ira instalar todas as bibliotecas.
+O Create React App usa `http://localhost:3000` por padrão; o roteamento usa URLs como `http://localhost:3000/#/login`. `PORT=4301 BROWSER=none npm start` seleciona uma porta temporária em shell POSIX e evita abrir o navegador automaticamente. Isso não altera a porta padrão do projeto.
 
-## Como rodar a aplicação localmente
-Para startar o projeto você pode digitar o comando `npm start` no diretório do projeto.
+Para gerar arquivos estáticos:
 
-Após isso ele irá abrir na porta `3000` no seu localhost, ou seja, basta apenas entrar em `localhost:3000`.
+```bash
+npm run build
+```
 
-## Como realizar o build da aplicação
-Para realizar o build do projeto você deve abrir o terminal na pasta do projeto e digitar o comando `npm run build` no diretório do projeto. Ele irá gerar tudo dentro da pasta build, pronto para ser usado.
+A saída fica em `build/`; o repositório não define script `start:prod`. Sirva essa pasta em uma hospedagem estática configurada por você. As rotas declaradas incluem `/`, `/login`, `/register`, `/contact`, `/receivedMessages`, `/changeCharacter`, `/charcacterList`, `/changeErrands`, `/errands` e `/acessDenied`; as grafias refletem o código.
 
-## Desenvolvedor
-[Paulo Ricardo da Luz Júnior](https://www.linkedin.com/in/paulo-ricardo-da-luz-j%C3%BAnior-5a3953164/)
+Validação com Node.js 14.21.3/npm 6.14.18: a instalação foi concluída após uma tentativa inicial interrompida por tempo limite. `CI=false npm run build` gerou `build/` com avisos existentes; `CI=true npm run build` falhou porque trata esses avisos como erros. O teste de montagem passou. O servidor de desenvolvimento iniciou na porta temporária 4301, compilou com avisos e respondeu HTTP 200. A captura real mostra a página inicial compilada, servida localmente. Nenhum login foi enviado nem foram acessados dados do Firebase; os processos de validação foram encerrados.
+
+<a id="project-structure"></a>
+
+## 🗂️ Project structure
+
+| Caminho | Responsabilidade |
+| --- | --- |
+| `src/App.js` | Rotas e guardas de navegação |
+| `src/pages/` | Telas públicas e administrativas |
+| `src/components/Moleculas/` | Cabeçalho e rodapé |
+| `src/services/` | Firebase e consulta ENEM |
+| `public/` | HTML, imagens, estilos e bibliotecas do template |
+| `public/woodrox-doc/` | Documentação do template visual |
+| `src/App.test.js` | Teste de montagem do componente principal |
+
+<a id="testing-and-quality"></a>
+
+## ✅ Testing and quality
+
+| Comando | Finalidade |
+| --- | --- |
+| `npm test -- --watchAll=false --runInBand` | Executar o teste existente sem observação |
+| `npm run build` | Compilar e empacotar para `build/` |
+
+Não há scripts separados de lint ou formatação. `npm run eject` altera a configuração do CRA e não é uma etapa de instalação ou validação.
+
+<a id="troubleshooting"></a>
+
+## 🔎 Troubleshooting
+
+| Situação | Verificação |
+| --- | --- |
+| Login ou gravação falha | Confira o projeto Firebase próprio, provedor de e-mail/senha e regras do Realtime Database. |
+| Consulta ENEM indisponível | A integração depende do proxy público e da API de educação; nenhum substituto foi implementado. |
+| Dependências incompatíveis ao instalar | Não há lockfile; registre a resolução efetiva e avalie atualizações separadamente. |
+
+O build com `CI=true` falha nos avisos `no-unused-vars` para `nome` e `idade` em `src/pages/Register/Register.js`. O teste passa com avisos React sobre as propriedades inline `text-transform` e `font-family` em `Home.js`. As correções permanecem fora desta entrega. A renderização inicial foi verificada; autenticação, operações de dados e consulta ENEM não foram verificadas. As chamadas aos serviços de dados ficaram bloqueadas durante a captura.
+
+<a id="contributing"></a>
+
+## 🤝 Contributing
+
+Crie uma branch a partir de `master`, mantenha as instruções compatíveis com os arquivos do projeto e descreva a alteração em um pull request. Execute as verificações aplicáveis descritas acima; registre limitações de serviços externos e ambiente. Não inclua credenciais, dados pessoais, `node_modules` ou arquivos gerados na entrega.
+
+<a id="license"></a>
+
+## 📜 License
+
+O código do projeto possui licença **MIT** em [LICENSE](LICENSE). Os arquivos de template, fontes e bibliotecas em `public/` mantêm seus próprios avisos e créditos; consulte também `public/woodrox-doc/`. Esses avisos não foram alterados.
+
+---
+
+<p align="center">Made with 💜 by <a href="https://github.com/paulodaluz">Paulo da Luz</a></p>
